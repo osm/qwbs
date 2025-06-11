@@ -45,7 +45,7 @@ func formatDiscord(data *writer.Data) (io.Reader, string, error) {
 	}
 
 	payload := DiscordPayload{
-		Content: fmt.Sprintf("%s **%s**: %s", bc.Address, bc.Name, bc.Message),
+		Content: fmt.Sprintf("**%s**: %s", bc.Name, bc.Message),
 		Embeds: []DiscordEmbed{
 			{
 				Title: fmt.Sprintf("%s/%s @ %s | %s",
