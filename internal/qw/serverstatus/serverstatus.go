@@ -19,9 +19,10 @@ const (
 )
 
 type Server struct {
-	Map     string   `json:"map"`
-	Mode    string   `json:"mode"`
-	Players []Player `json:"players"`
+	Map        string   `json:"map"`
+	MaxPlayers string   `json:"max_players"`
+	Mode       string   `json:"mode"`
+	Players    []Player `json:"players"`
 }
 
 type Player struct {
@@ -79,6 +80,7 @@ func Query(serverAddr string) (*Server, error) {
 	}
 
 	mapName := infostring.Get(info, "map")
+	maxPlayers := infostring.Get(info, "maxclients")
 	mode := infostring.Get(info, "mode")
 
 	var playerData []byte
@@ -92,9 +94,10 @@ func Query(serverAddr string) (*Server, error) {
 	}
 
 	return &Server{
-		Map:     mapName,
-		Mode:    mode,
-		Players: players,
+		Map:        mapName,
+		MaxPlayers: maxPlayers,
+		Mode:       mode,
+		Players:    players,
 	}, nil
 }
 

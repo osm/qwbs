@@ -58,7 +58,7 @@ func formatJSON(data *writer.Data) (io.Reader, string, error) {
 func formatText(data *writer.Data) (io.Reader, string, error) {
 	bc := data.Broadcast
 	payload := fmt.Sprintf("> %s [%s/%s] %s: %s",
-		bc.Address, bc.Players, bc.MaxPlayers, bc.Name, bc.Message)
+		bc.Address, data.Players(), data.MaxPlayers(), bc.Name, bc.Message)
 
 	return bytes.NewBufferString(payload), contentTypeText, nil
 }

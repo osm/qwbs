@@ -49,7 +49,7 @@ func formatDiscord(data *writer.Data) (io.Reader, string, error) {
 		Embeds: []DiscordEmbed{
 			{
 				Title: fmt.Sprintf("%s/%s @ %s | %s",
-					bc.Players, bc.MaxPlayers, sv.Map, bc.Address),
+					data.Players(), data.MaxPlayers(), sv.Map, bc.Address),
 				Description: playerNames(pl),
 			},
 		},
